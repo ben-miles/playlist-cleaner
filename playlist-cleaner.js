@@ -17,6 +17,7 @@ let removeVideosFromChannel = async (channelName) => {
 		// Check if the video belongs to the specified channel
 		if (video.querySelector('.ytd-channel-name > a').innerText === channelName) {
 			i++;
+			video.scrollIntoView({behavior: 'instant', block: 'center', inline: 'center'});
 			let videoTitle = video.querySelector('a#video-title').innerText;
 			console.info(`${channelName} - #${i} - ${videoTitle}`);
 			// Click the corresponding Remove button
