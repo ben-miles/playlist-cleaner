@@ -78,6 +78,14 @@ entryPoint.append(playlistCleaner);
 
 let channelName = '';
 
+// On key down, if enter key is pressed, click the button
+input.onkeydown = function(e){
+	if (e.key === 'Enter') {
+		button.click();
+	}
+}
+
+// On button click, invoke the removeVideosFromChannel function
 button.onclick = function(){
 	channelName = input.value;
 	if (channelName === '') {
