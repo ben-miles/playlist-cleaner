@@ -25,17 +25,31 @@ title.style.textAlign = 'center';
 let search = document.createElement('div');
 search.setAttribute('id', 'search');
 playlistCleaner.append(search);
-search.style.textAlign = 'center';
+search.style.display = 'flex';
+search.style.flexDirection = 'row';
 
 let input = document.createElement('input');
 input.setAttribute('id', 'input');
 search.append(input);
 input.placeholder='Enter Channel Name';
+input.style.background = 'transparent';
+input.style.border = '1px solid white';
+input.style.borderRadius = '12px 0 0 12px';
+input.style.color = 'white';
+input.style.flexGrow = 1;
+input.style.outline = 'none';
+input.style.padding = '8px 12px';
 
 let button = document.createElement('button');
 button.setAttribute('id', 'button');
 search.append(button);
-button.textContent = 'Find & Remove';
+button.textContent = 'Go';
+button.style.background = 'rgba(255,255,255,0.1)';
+button.style.border = '1px solid white';
+button.style.borderRadius = '0 12px 12px 0';
+button.style.color = 'white';
+button.style.marginLeft = '-1px';
+button.style.padding = '8px 12px';
 
 let stats = document.createElement('div');
 stats.setAttribute('id', 'stats');
@@ -58,8 +72,9 @@ stats.append(removed);
 let progressBar = document.createElement('div');
 progressBar.setAttribute('id', 'progress-bar');
 playlistCleaner.append(progressBar);
-progressBar.style.height = '4px';
 progressBar.style.backgroundColor = 'rgba(255,255,255,0.1)';
+progressBar.style.height = '4px';
+progressBar.style.display = 'none';
 
 let progress = document.createElement('div');
 progress.setAttribute('id', 'progress');
@@ -113,6 +128,7 @@ let removeVideosFromChannel = async (channelName) => {
 	let removedCount = 0;
 	removed.innerHTML = 'Removed: 0';
 	videoList.innerHTML = '';
+	progressBar.style.display = 'block';
 	// Iterate over each video
 	for (video of matchingVideos) {
 		// Scroll the video into view
